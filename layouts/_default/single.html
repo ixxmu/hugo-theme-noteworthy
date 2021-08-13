@@ -7,7 +7,9 @@
     {{ with .Params.categories }}
     {{ range . }}
     <span id="categories">
+    <p>
     <a style="color:#ababab",href="{{ "categories" | absURL}}/{{ . | urlize }}">{{ . }}</a>
+    </p>
     </span>
     {{ end }}
     {{ end }}
