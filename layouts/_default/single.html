@@ -2,13 +2,29 @@
 
 <h1 class="post-title">{{ .Title }}</h1>
     {{ if .Date }}
-    <time>{{ .Date.Format "January 2, 2006" }}</time>
+    <time>发表于 {{ .Date.Format "January 2, 2006" }} 分类于 
     {{ end }}
+    {{ with .Params.categories }}
+    {{ range . }}
+    <span id="categories">
+    <a style="color:#ababab",href="{{ "categories" | absURL}}/{{ . | urlize }}">{{ . }}</a>
+    </span>
+    {{ end }}
+    {{ end }}
+    </time>
     <div>
         <p>
         {{ .Content }}
         </p>
     </div>
+    <div class="page-footer">
+        {{if .Params.tags}}
+        <hr class="footer-divider">
+        {{ range .Params.tags }}
+            <a class="tag" href="/tags/{{ . | urlize }}">#{{.}}</a>
+        {{ end }}
+      {{ end }}
+     </div>
     {{ template "_internal/disqus.html" . }}
 
     {{ if .Site.Params.enableKofi }}
@@ -21,14 +37,5 @@
         </script> 
 
     {{ end }}
-
-    <div class="page-footer">
-        {{if .Params.tags}}
-        <hr class="footer-divider">
-        {{ range .Params.tags }}
-            <a class="tag" href="/tags/{{ . | urlize }}">#{{.}}</a>
-        {{ end }}
-      {{ end }}
-    </div>
 
 {{end}}
