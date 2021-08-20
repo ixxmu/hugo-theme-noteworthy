@@ -1,9 +1,20 @@
 <footer class="footer">
 	{{ partial "social.html" . }}
 
-    <p><a href="https://github.com/kimcc/hugo-theme-noteworthy" target="_blank" rel="noopener">{{ i18n "noteworthy_theme" }}</a></p>
-    <p><a href="https://gohugo.io" target="_blank" rel="noopener">{{ i18n "built_with_hugo" }}</a></p>
-
+    <div style="color:#ababab">
+    <span style="font-size:medium" align="center">
+	    ❤️{{ if .Site.Copyright }} {{ print .Site.Copyright }} {{ else }} {{ print .Site.Title }} {{ end }}❤️ 
+	    <br>
+    	Copyright  
+    	&copy; 
+    	{{ now.Format "2006" }} 
+    </span>
+	    <br>
+    <font style="font-size:medium" >
+    <a href="https://gohugo.io" target="_blank" rel="noopener"> Powered by Hugo </a>&
+    <a href="https://github.com/kimcc/hugo-theme-noteworthy" target="_blank" rel="noopener"> Noteworthy </a>
+    </font>
+    </div>
 	{{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
 	<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous"></script>
 </footer>
