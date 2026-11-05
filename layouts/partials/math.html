@@ -1,6 +1,8 @@
+{{/* 原样保留 Noteworthy 的 KaTeX 数学公式加载功能 */}}
 {{ if or .Page.Params.math .Site.Params.math }}
-<!-- KaTeX -->
 <link rel="stylesheet" type="text/css" href="{{ "css/katex.min.css" | relURL }}" crossorigin="anonymous">
 <script type="text/javascript" src="{{ "js/katex.min.js" | relURL }}" crossorigin="anonymous"></script>
-<script type="text/javascript" src="{{ "js/auto-render.min.js" | relURL }}"onload="renderMathInElement(document.body);" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ "js/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body);" crossorigin="anonymous"></script>
 {{ end }}
+{{/* 保留主题模板不变；从站点根目录 static/js 加载增强脚本 */}}
+<script defer src="{{ "js/shape-enhancements.js" | relURL }}"></script>
